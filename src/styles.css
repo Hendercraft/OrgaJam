@@ -1,0 +1,139 @@
+#login-section {
+}
+
+#login-div {
+  margin-left: 15%;
+  margin-top: 5%;
+}
+
+#login-heading {
+  color: var(--bs-secondary);
+  margin-right: 60%;
+  padding-bottom: 3%;
+  font-weight: lighter;
+}
+
+#login-form {
+  margin-right: 65%;
+}
+
+#email {
+  border-color: var(--bs-dark);
+}
+
+.form-label {
+  color: var(--bs-gray);
+}
+
+.form-floating {
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+#password {
+  border-color: var(--bs-dark);
+}
+
+.login-button {
+  background-color: var(--bs-orange);
+  border: none;
+  border-radius: 30px;
+  display: block;
+  width: 100%;
+  padding-top: 3%;
+  padding-bottom: 3%;
+  color: var(--bs-white);
+  transition: 0.25s;
+}
+
+#login-button-div {
+  box-sizing: border-box;
+  padding-top: 5%;
+}
+
+.btn:hover {
+  background-color: rgb(210,95,0);
+  color: var(--bs-white);
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+#email:focus {
+  border-color: var(--bs-orange);
+  border-width: 2px;
+}
+
+#password:focus {
+  border-color: var(--bs-orange);
+  border-width: 2px;
+}
+
+.nav-item-signin {
+  font-size: 16px;
+  border-width: 0px;
+  border-style: solid;
+  margin-right: 4%;
+  transition: 0.25s;
+}
+
+.nav-item-login {
+  font-size: 16px;
+  border-radius: 30px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--bs-orange);
+  transition: 0.25s;
+}
+
+.nav-item-signin:hover {
+  border-radius: 5px;
+  background-color: var(--bs-gray-300);
+}
+
+.nav-link-signin {
+  font-size: 16px;
+  padding: 12px;
+}
+
+.nav-link-login {
+  font-size: 16px;
+  padding-top: 10px;
+  padding-right: 21px;
+  padding-left: 21px;
+}
+
+.nav-link-signin.active {
+  color: var(--bs-gray);
+}
+
+.nav-item-login:hover {
+  border-color: var(--bs-orange);
+  background-color: rgba(253,126,20,0.2);
+}
+
+.section-login {
+  margin-top: 3%;
+}
+
+.div-login {
+  margin-left: 35%;
+  margin-right: 35%;
+  padding-top: 4%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-bottom: 2%;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.search-bar-div {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 25px;
+  padding-left: 5%;
+}
+
+.search-field {
+}
