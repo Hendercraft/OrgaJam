@@ -1,16 +1,12 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 
+import { Observable, of, switchMap } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
-import { Router } from '@angular/router';
-import firebase from 'firebase/compat';
-import app = firebase.app;
-import { Observable, of, switchMap } from 'rxjs';
-
 @Injectable({
   providedIn: 'root',
 })
@@ -19,8 +15,7 @@ export class AuthService {
 
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
-    public afAuth: AngularFireAuth, // Inject Firebase auth service
-    public router: Router
+    public afAuth: AngularFireAuth // Inject Firebase auth service
   ) {
     // @ts-ignore
     //TODO local storage ?
@@ -38,18 +33,39 @@ export class AuthService {
     );
   }
 
-  async singIn(email: string, password: string) {
-    const credential = this.afAuth
+  async signup(email: string, password: string) {
+    await this.afAuth
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        console.log('Do redirect and shit here');
+
+        //localStorage.setItem('user', JSON.stringify(res.user));
+      });
+  }
+
+  async signUp(email: string, password: string) {
+    console.log('Do redirect and shit here');
+
+    await this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         //Sined In
         //TODO
-        console.log('Do redirect and shit here');
+        console.log('userCredential');
         this.SendVerificationMail();
-        return this.updateUserData(userCredential.user);
+        return userCredential.user; //this.updateUserData(userCredential.user);
       })
       .catch((error) => {
         console.log(error);
+      });
+  }
+
+  async signIn(email: string, password: string) {
+    await this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        console.log('Do redirect and shit here on login');
+        return this.updateUserData(userCredential.user);
       });
   }
 
@@ -77,7 +93,7 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-    return user !== null && user.emailVerified !== false ? true : false;
+    return user !== null && user.emailVerified !== false;
   }
 
   private updateUserData(user: any) {
