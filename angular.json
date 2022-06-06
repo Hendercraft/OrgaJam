@@ -109,9 +109,21 @@
             "firebaseProject": "orgajam-b3d51",
             "firebaseHostingSite": "orgajam-b3d51"
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "OrgaJam"
+  "defaultProject": "OrgaJam",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }

@@ -18,13 +18,23 @@ import {MatIconModule} from "@angular/material/icon";
 import {AuthService} from "./services/auth.service";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireModule} from "@angular/fire/compat";
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ProfilComponent } from './profil/profil.component';
+import { MessageComponent } from './message/message.component';
+import { HomeComponent } from './home/home.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
+    NavBarComponent,
+    ProfilComponent,
+    MessageComponent,
+    HomeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
