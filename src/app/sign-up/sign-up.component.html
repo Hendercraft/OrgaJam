@@ -1,1 +1,28 @@
-<p>sign-up works!</p>
+<mat-card>
+  <form [formGroup]="signUpForm" (ngSubmit)="submitForm()">
+    <mat-form-field appearance="outline">
+      <mat-label>Email:</mat-label>
+      <input matInput type="email" placeholder="email@example.com" formControlName="email">
+      <span *ngIf="email?.invalid && email?.touched">
+      Your email does not look right
+       </span>
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint>Enter your email</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password">
+      <mat-icon matSuffix> vpn_key</mat-icon>
+      <span *ngIf="password?.invalid && password?.touched">
+      You must use one letter and one number
+       </span>
+      <mat-hint>Your password must have at least one letter and one</mat-hint>
+    </mat-form-field>
+
+    <button mat-button>Submit</button>
+
+
+  </form>
+
+</mat-card>

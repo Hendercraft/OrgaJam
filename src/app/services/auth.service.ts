@@ -6,11 +6,11 @@ import {Router} from "@angular/router";
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   userData :any;
   constructor(
-      private afAuth : AngularFireAuth,
-      private router : Router
+      private afAuth : AngularFireAuth
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -25,7 +25,7 @@ export class AuthService {
     });
   }
 
-  signUp(email:string,password:string){
+  signUp(email:string, password:string){
     return this.afAuth
         .createUserWithEmailAndPassword(email,password)
         .then((result)=> {
