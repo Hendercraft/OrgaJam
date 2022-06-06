@@ -8,6 +8,13 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import {ReactiveFormsModule} from "@angular/forms";
+
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
+import {MatCardModule} from "@angular/material/card";
+import {MatButtonModule} from "@angular/material/button";
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -17,6 +24,12 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore())
