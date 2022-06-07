@@ -28,6 +28,11 @@ import { MessageComponent } from './message/message.component';
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import {MatSidenavModule} from "@angular/material/sidenav";
+import { ProfileCardComponent } from './home/profile-card/profile-card.component';
+import { FeedComponent } from './home/feed/feed.component';
+import { FriendsCardComponent } from './home/friends-card/friends-card.component';
+import {MatDividerModule} from "@angular/material/divider";
+import {MatListModule} from "@angular/material/list";
 
 
 
@@ -39,7 +44,11 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     ProfilComponent,
     MessageComponent,
     HomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    ProfileCardComponent,
+    FeedComponent,
+    FriendsCardComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -60,6 +69,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
+    MatDividerModule,
+    MatListModule,
 
   ],
   providers: [AuthService],
