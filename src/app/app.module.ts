@@ -22,13 +22,22 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-
+import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { ProfilComponent } from './profil/profil.component';
+import { MessageComponent } from './message/message.component';
+import { HomeComponent } from './home/home.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SignUpComponent
+    SignUpComponent,
+    NavBarComponent,
+    ProfilComponent,
+    MessageComponent,
+    HomeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,14 +49,15 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    MatSlideToggleModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     RouterModule,
     MatIconModule,
+    MatSlideToggleModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
