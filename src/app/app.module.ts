@@ -27,6 +27,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { MessageComponent } from './message/message.component';
 import { HomeComponent } from './home/home.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import {MatSidenavModule} from "@angular/material/sidenav";
+
 
 
 @NgModule({
@@ -54,6 +56,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     RouterModule,
     MatIconModule,
     MatSlideToggleModule,
+    MatSidenavModule,
     AngularFirestoreModule,
     AngularFireStorageModule,
     AngularFireDatabaseModule,
