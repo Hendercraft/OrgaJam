@@ -20,7 +20,9 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = this.fb.group({
       email: ['',
         [Validators.required, Validators.email]],
-      password: ['',[Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]]
+      password: ['',[Validators.required, Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]],
+      isPro:[false]
+
     });
   }
 
@@ -33,10 +35,13 @@ export class SignUpComponent implements OnInit {
     return this.signUpForm.get('password');
   }
 
+  get isPro() {
+    return this.signUpForm.get('isPro');
+  }
+
+
   submitForm(){
-    console.log("jjeu");
-    console.log(this.signUpForm.value.email);
-    this.auth.signUp(this.signUpForm.value.email, this.signUpForm.value.password).then(r => console.log(r))
+    this.auth.signUp(this.signUpForm.value.email, this.signUpForm.value.password,this.signUpForm.value.isPro).then(r => console.log(r));
   }
 
 }

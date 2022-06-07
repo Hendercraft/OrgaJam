@@ -18,6 +18,10 @@ import {MatIconModule} from "@angular/material/icon";
 import {AuthService} from "./services/auth.service";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireModule} from "@angular/fire/compat";
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 
 
@@ -36,10 +40,14 @@ import {AngularFireModule} from "@angular/fire/compat";
     MatButtonModule,
     MatCheckboxModule,
     ReactiveFormsModule,
+    MatSlideToggleModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     RouterModule,
-    MatIconModule
+    MatIconModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
+    AngularFireDatabaseModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

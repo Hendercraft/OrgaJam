@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from "./user";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {Router} from "@angular/router";
+import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
+
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,12 @@ import {Router} from "@angular/router";
 export class AuthService {
   userData :any;
   constructor(
-      private afAuth : AngularFireAuth
+      private afAuth : AngularFireAuth,
+      private afStore : AngularFirestore
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
-        this.userData =user;
+        this.userData=user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       }
@@ -25,17 +27,33 @@ export class AuthService {
     });
   }
 
-  signUp(email:string, password:string){
+  signUp(email:string, password:string,isPro : boolean){
     return this.afAuth
         .createUserWithEmailAndPassword(email,password)
         .then((result)=> {
           //this.sendVerificationMail();
-          //this.setUserData(result.user);
+          this.setUserData(result.user,isPro);
+          //window.alert(this.userData.uid+this.userData.email+this.userData.displayName+this.userData.photoURL+this.userData.emailVerified+this.userData.isPro);
             }
         )
         .catch((error)=> {
           window.alert(error.message);
         });
+  }
+
+  setUserData(user: any,isPro:boolean) {
+    const userRef: AngularFirestoreDocument<any> = this.afStore.collection(`users`).doc(user.uid);
+    const userData: User = {
+      uid: user.uid,
+      email: user.email,
+      displayName: user.displayName,
+      photoURL: user.photoURL,
+      emailVerified: user.emailVerified,
+      isPro:isPro,
+    };
+    return userRef.set(userData, {
+      merge: true,
+    });
   }
 }
 
