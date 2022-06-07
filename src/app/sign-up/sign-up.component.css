@@ -1,0 +1,31 @@
+.sign-up-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-up-card{
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-flow: column;
+}
+
+.sign-up-title{
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.sign-up-card-item{
+    width: 100%;
+}
+.sign-up-form{
+    display: flex;
+    flex-flow: column;
+}
+
+.sign-up-button{
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+

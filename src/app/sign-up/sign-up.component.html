@@ -1,29 +1,27 @@
-<mat-card>
-  <form [formGroup]="signUpForm" (ngSubmit)="submitForm()">
-    <mat-form-field appearance="outline">
-      <mat-label>Email:</mat-label>
-      <input matInput type="email" placeholder="email@example.com" formControlName="email">
-      <span *ngIf="email?.invalid && email?.touched">
-      Your email does not look right
-       </span>
-      <mat-icon matSuffix>email</mat-icon>
-      <mat-hint>Enter your email</mat-hint>
-    </mat-form-field>
+<div class="sign-up-div">
+  <mat-card class="sign-up-card mat-elevation-z10" >
+    <mat-card-title class="sign-up-title">S'inscrire</mat-card-title>
+    <form [formGroup]="signUpForm" (ngSubmit)="submitForm()" class="sign-up-form">
+      <mat-form-field appearance="outline" class="sign-up-card-item">
+        <mat-label>Email:</mat-label>
+        <input matInput type="email" placeholder="email@example.com" formControlName="email">
+        <span *ngIf="email?.invalid && email?.touched">
+        Your email does not look right
+         </span>
+        <mat-icon matSuffix>email</mat-icon>
+      </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" formControlName="password">
-      <mat-icon matSuffix> vpn_key</mat-icon>
-      <span *ngIf="password?.invalid && password?.touched">
-      You must use one letter and one number
-       </span>
-      <mat-hint>Your password must have at least one letter and one</mat-hint>
-    </mat-form-field>
-    <mat-slide-toggle formControlName="isPro">Are you a Professional ?</mat-slide-toggle>
+      <mat-form-field appearance="outline" class="sign-up-card-item">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" formControlName="password">
+        <mat-icon matSuffix> vpn_key</mat-icon>
+        <span *ngIf="password?.invalid && password?.touched">
+        You must use one letter and one number
+         </span>
+      </mat-form-field>
+      <mat-slide-toggle formControlName="isPro" class="sign-up-card-item">Are you a Professional ?</mat-slide-toggle>
+      <button mat-button class="sign-up-card-item sign-up-button">Submit</button>
+    </form>
 
-    <button mat-button>Submit</button>
-
-
-  </form>
-
-</mat-card>
+  </mat-card>
+</div>
