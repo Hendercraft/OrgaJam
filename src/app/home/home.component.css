@@ -1,5 +1,5 @@
 .col-profile-card{
   display: flex;
   flex-flow: column;
-  align-items:end;
+  align-items:flex-end;
 }

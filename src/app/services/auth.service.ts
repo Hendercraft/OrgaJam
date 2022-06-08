@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable, NgZone} from '@angular/core';
 import { User } from "./user";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -12,7 +13,9 @@ export class AuthService {
   userData :any;
   constructor(
       private afAuth : AngularFireAuth,
-      private afStore : AngularFirestore
+      private afStore : AngularFirestore,
+      private router :Router,
+      private ngZone : NgZone
   ) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
@@ -37,6 +40,20 @@ export class AuthService {
             }
         )
         .catch((error)=> {
+          window.alert(error.message);
+        });
+  }
+
+  signIn(email: string, password: string) {
+    return this.afAuth
+        .signInWithEmailAndPassword(email, password)
+        .then((result) => {
+          window.alert(result.user?.uid);
+          this.ngZone.run(() => {
+            this.router.navigate(['/home']);
+          });
+        })
+        .catch((error) => {
           window.alert(error.message);
         });
   }

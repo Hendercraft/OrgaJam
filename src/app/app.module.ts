@@ -33,6 +33,8 @@ import { FeedComponent } from './home/feed/feed.component';
 import { FriendsCardComponent } from './home/friends-card/friends-card.component';
 import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
+import {SignInComponent} from "./sign-in/sign-in.component";
+import {WelcomeComponent} from "./welcome/welcome.component";
 
 
 
@@ -48,7 +50,8 @@ import {MatListModule} from "@angular/material/list";
     ProfileCardComponent,
     FeedComponent,
     FriendsCardComponent,
-
+    SignInComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,

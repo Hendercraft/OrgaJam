@@ -1,0 +1,31 @@
+.sign-in-div{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.sign-in-card{
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-flow: column;
+}
+
+.sign-in-title{
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.sign-in-card-item{
+    width: 100%;
+}
+.sign-in-form{
+    display: flex;
+    flex-flow: column;
+}
+
+.sign-in-button{
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
+

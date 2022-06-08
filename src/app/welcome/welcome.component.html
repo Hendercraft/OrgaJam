@@ -1,0 +1,38 @@
+<nav class="navbar navbar-light navbar-expand-md" style="padding-top: 2%;padding-bottom: 2%;">
+    <div class="container-fluid"><a class="navbar-brand" href="#" style="margin-top: 0px;margin-left: 15%;font-size: 27px;">OrgaJam</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon">`</span></button>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav ms-auto" style="margin-right: 15%;">
+                <li class="nav-item text-center nav-item-signin"><a class="nav-link fw-bold active nav-link-signin" href="#">S'inscrire</a></li>
+                <li class="nav-item fw-bold text-center nav-item-login"><a class="nav-link nav-link-login" href="" style="color: var(--bs-orange);">S'identifier</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<main>
+    <section id="login-section">
+        <div id="login-div">
+            <h1 id="login-heading">Bienvenue dans le premier réseau social pour musiciens</h1>
+            <form (ngSubmit)="submitForm()" [formGroup]="welcomeSignInForm" class="sign-in-form">
+
+                <mat-form-field appearance="outline" class="sign-in-card-item">
+                    <mat-label>Email:</mat-label>
+                    <input formControlName="email" matInput placeholder="email@example.com" type="email">
+                    <span *ngIf="email?.invalid && email?.touched">
+                Your email does not look right
+                 </span>
+                    <mat-icon matSuffix>email</mat-icon>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="sign-in-card-item">
+                    <mat-label>Password</mat-label>
+                    <input formControlName="password" matInput type="password">
+                    <mat-icon matSuffix> vpn_key</mat-icon>
+                    <span *ngIf="password?.invalid && password?.touched">
+                 You must use one letter and one number
+                </span>
+                </mat-form-field>
+                <button class="sign-in-card-item sign-up-button" mat-button>Submit</button>
+            </form>
+        </div>
+    </section>
+</main>
