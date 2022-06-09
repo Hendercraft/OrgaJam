@@ -15,7 +15,7 @@ import {MatCardModule} from "@angular/material/card";
 import {MatButtonModule} from "@angular/material/button";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import {MatIconModule} from "@angular/material/icon";
-import {AuthService} from "./services/auth.service";
+import {AuthService} from "./services/auth/auth.service";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {AngularFireModule} from "@angular/fire/compat";
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -35,6 +35,7 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatListModule} from "@angular/material/list";
 import {SignInComponent} from "./sign-in/sign-in.component";
 import {WelcomeComponent} from "./welcome/welcome.component";
+import {StorageService} from "./services/storage/storage.service";
 
 
 
@@ -76,7 +77,7 @@ import {WelcomeComponent} from "./welcome/welcome.component";
     MatListModule,
 
   ],
-  providers: [AuthService],
+  providers: [AuthService,StorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
