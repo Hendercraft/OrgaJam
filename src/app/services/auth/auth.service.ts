@@ -72,5 +72,14 @@ export class AuthService {
       merge: true,
     });
   }
+
+  isLoggedIn(){
+    return localStorage.getItem('user') !== null;
+  }
+
+  logOut(){
+    localStorage.clear();
+  }
+
 }
 
