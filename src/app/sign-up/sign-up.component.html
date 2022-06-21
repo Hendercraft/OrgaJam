@@ -1,26 +1,28 @@
 <div class="sign-up-div">
   <mat-card class="sign-up-card mat-elevation-z10" >
-    <mat-card-title class="sign-up-title">Sign Up</mat-card-title>
+    <mat-card-title class="sign-up-title">
+      Inscription
+    </mat-card-title>
     <form [formGroup]="signUpForm" (ngSubmit)="submitForm()" class="sign-up-form">
       <mat-form-field appearance="outline" class="sign-up-card-item">
         <mat-label>Email:</mat-label>
         <input matInput type="email" placeholder="email@example.com" formControlName="email">
         <span *ngIf="email?.invalid && email?.touched">
-        Your email does not look right
+        Il semblerait qu'il y a une erreur dans votre adresse email
          </span>
         <mat-icon matSuffix>email</mat-icon>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="sign-up-card-item">
-        <mat-label>Password</mat-label>
+        <mat-label>Mot de passe</mat-label>
         <input matInput type="password" formControlName="password">
         <mat-icon matSuffix> vpn_key</mat-icon>
         <span *ngIf="password?.invalid && password?.touched">
-        You must use one letter and one number
+        Votre mots de passe doit contenir au moins une lettre et un chiffre
          </span>
       </mat-form-field>
-      <mat-slide-toggle formControlName="isPro" class="sign-up-card-item">Are you a Professional ?</mat-slide-toggle>
-      <button mat-button class="sign-up-card-item sign-up-button">Submit</button>
+      <mat-slide-toggle formControlName="isPro" class="sign-up-card-item">Est-vous un professionnel ?</mat-slide-toggle>
+      <button mat-button class="sign-up-card-item sign-up-button">S'inscrire</button>
     </form>
 
   </mat-card>

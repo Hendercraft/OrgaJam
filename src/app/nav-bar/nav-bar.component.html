@@ -28,16 +28,14 @@
         </div>
       </form>
 
-      <div *ngIf="isLoggedIn() === true ; else elseBlock">
+      <div *ngIf="isLoggedIn() === true">
         <button class="btn btn-light action-button" role="button" (click)="logOut()" >Se déconnecter</button>
       </div>
 
-      <ng-template #elseBlock>
+      <div *ngIf="isLoggedIn() === false">
         <button  class="btn btn-light action-button" role="button" routerLink="sign-up" >S'enregistrer</button>
         <button class="btn btn-light action-button" role="button" routerLink="sign-in" >Se connecter</button>
-      </ng-template>
-
-
+      </div>
 
     </div>
   </div>
