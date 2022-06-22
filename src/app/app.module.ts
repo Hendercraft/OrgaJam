@@ -39,6 +39,7 @@ import {StorageService} from "./services/storage/storage.service";
 import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostComponent } from './post/post.component';
+import {MatSelectModule} from "@angular/material/select";
 
 
 
@@ -82,6 +83,8 @@ import { PostComponent } from './post/post.component';
     MatDividerModule,
     MatListModule,
     FormsModule,
+    MatSelectModule,
+
   ],
   providers: [AuthService,StorageService],
   bootstrap: [AppComponent]

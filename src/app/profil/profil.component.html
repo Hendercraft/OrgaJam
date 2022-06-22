@@ -1,1 +1,39 @@
-<p>profil works!</p>
+<mat-card class = "main">
+  <form [formGroup]="profilForm" (ngSubmit)="profilOnSubmit()">
+    <p>
+      <mat-form-field appearance="outline" class="profil-card-item">
+        <mat-label>Nom d'utilisateur</mat-label>
+        <input matInput id="username" formControlName="username" type="text">
+      </mat-form-field>
+    </p>
+    <p>
+      <mat-form-field appearance="outline" class="profil-card-item">
+        <mat-label>Email</mat-label>
+        <input matInput id="email" formControlName="email" type="email">
+      </mat-form-field>
+    </p>
+
+
+    <label for="profilPicture" class="md-button md-raised md-primary upload-button">Upload une photo de profil :</label>
+    <br>
+    <input  id="profilPicture"  formControlName="picture" type="file">
+    <br>
+    <p>
+      <mat-form-field appearance="fill" class="profil-card-item">
+        <mat-label>Instrument :</mat-label>
+        <mat-select [(value)]="selected">
+          <mat-option *ngFor="let instrument of instrumentList" [value]="instrument">{{instrument}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </p>
+
+    <mat-checkbox id="isPro" formControlName="isPro" type="file">Êtes-vous un professionnel</mat-checkbox>
+    <br>
+    <button class="sign-up-button" mat-button [disabled]="profilForm.invalid" >Envoyer</button>
+
+  </form>
+
+
+
+
+</mat-card>

@@ -67,6 +67,7 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
+      instrument: user.instrument,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
       isPro:isPro,

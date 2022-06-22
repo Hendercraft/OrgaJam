@@ -8,7 +8,7 @@ import {SignInComponent} from "./sign-in/sign-in.component";
 import {AddPostComponent} from "./add-post/add-post.component";
 
 const routes: Routes = [
-  {path : 'profile', component : ProfilComponent },
+  {path : 'profil', component : ProfilComponent },
   {path: 'message', component: MessageComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'sign-in', component: SignInComponent},

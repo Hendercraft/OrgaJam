@@ -27,7 +27,7 @@ export class PostsComponent implements OnInit {
   getUserData(uid : string){
     const observer = {
       next: user => {
-        this.userList.push(user)
+        this.userList.push(user.data())
       },
       error: err  => {
         console.log(err);

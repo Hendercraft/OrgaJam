@@ -75,7 +75,7 @@ export class StorageService {
     return postList;
   }
 
-  getUserWithUID(uid:string){
+    getUserWithUID(uid:string){
     return this.afStore.collection(`users`).doc(uid).get();
   }
 }
