@@ -38,6 +38,7 @@ import {WelcomeComponent} from "./welcome/welcome.component";
 import {StorageService} from "./services/storage/storage.service";
 import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './add-post/add-post.component';
+import { PostComponent } from './post/post.component';
 
 
 
@@ -56,7 +57,8 @@ import { AddPostComponent } from './add-post/add-post.component';
     SignInComponent,
     WelcomeComponent,
     PostsComponent,
-    AddPostComponent
+    AddPostComponent,
+    PostComponent
   ],
   imports: [
     BrowserModule,

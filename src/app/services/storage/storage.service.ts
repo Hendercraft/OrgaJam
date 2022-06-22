@@ -76,7 +76,6 @@ export class StorageService {
   }
 
   getUserWithUID(uid:string){
-    const querySnapshot = this.afStore.collection(`users`).doc(uid).get();
-    return querySnapshot;
+    return this.afStore.collection(`users`).doc(uid).get();
   }
 }
