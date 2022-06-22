@@ -3,6 +3,7 @@ import { User } from "../user";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
+import {collection} from "@angular/fire/firestore";
 
 
 @Injectable({
@@ -11,6 +12,7 @@ import {Router} from "@angular/router";
 
 export class AuthService {
   userData :any;
+  loggedIn = false;
   constructor(
       private afAuth : AngularFireAuth,
       private afStore : AngularFirestore,
@@ -20,6 +22,7 @@ export class AuthService {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData=user;
+        this.loggedIn = true;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       }
@@ -72,5 +75,21 @@ export class AuthService {
       merge: true,
     });
   }
+
+  isLoggedIn(){
+    console.log(this.loggedIn);
+    return this.loggedIn;
+  }
+
+  logOut(){
+    this.afAuth.signOut().then(() => {
+      this.loggedIn = false;
+      this.userData = null;
+    }).catch((error) => {
+      console.log("There is an error while loggingOut")
+      console.log(error)
+    });
+  }
+
 }
 

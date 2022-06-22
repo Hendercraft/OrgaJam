@@ -26,7 +26,17 @@
           <i class="fa fa-search"></i>
           <input class="form-control search-field" type="search" id="search-field" name="search" placeholder="Recherche">
         </div>
-      </form><button class="btn btn-light action-button" role="button" >Se déconnecter</button>
+      </form>
+
+      <div *ngIf="isLoggedIn() === true">
+        <button class="btn btn-light action-button" role="button" (click)="logOut()" >Se déconnecter</button>
+      </div>
+
+      <div *ngIf="isLoggedIn() === false">
+        <button  class="btn btn-light action-button" role="button" routerLink="sign-up" >S'enregistrer</button>
+        <button class="btn btn-light action-button" role="button" routerLink="sign-in" >Se connecter</button>
+      </div>
+
     </div>
   </div>
 </nav>

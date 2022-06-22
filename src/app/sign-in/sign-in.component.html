@@ -1,14 +1,13 @@
 <div class="sign-in-div">
     <mat-card class="sign-in-card mat-elevation-z10">
-        <mat-card-title class="sign-in-title">Sign In</mat-card-title>
+        <mat-card-title class="sign-in-title">
+          Connexion
+        </mat-card-title>
         <form (ngSubmit)="submitForm()" [formGroup]="signInForm" class="sign-in-form">
 
             <mat-form-field appearance="outline" class="sign-in-card-item">
                 <mat-label>Email:</mat-label>
                 <input formControlName="email" matInput placeholder="email@example.com" type="email">
-                <span *ngIf="email?.invalid && email?.touched">
-                Your email does not look right
-                 </span>
                 <mat-icon matSuffix>email</mat-icon>
             </mat-form-field>
 
@@ -16,9 +15,6 @@
                 <mat-label>Password</mat-label>
                 <input formControlName="password" matInput type="password">
                 <mat-icon matSuffix> vpn_key</mat-icon>
-                <span *ngIf="password?.invalid && password?.touched">
-                 You must use one letter and one number
-                </span>
             </mat-form-field>
             <button class="sign-in-card-item sign-up-button" mat-button>Submit</button>
         </form>
