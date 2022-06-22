@@ -9,7 +9,6 @@ import {User} from "../services/user";
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
-  postWithUserList!:[post:Post,user:User][];
   postList: Post[] = [];
   userList: User[] = [];
   constructor(private storage : StorageService) { }
@@ -22,23 +21,6 @@ export class PostsComponent implements OnInit {
       }
       )
     );
-
-
-
-
-
-    // this.storage.getAllPosts().then(result => {
-    //   console.log("result : ");
-    //   console.log(result);
-    //   result.forEach(post => {
-    //     console.log("post : ");
-    //     console.log(post);
-    //       this.storage.getUserWithUID(post.uid).subscribe(
-    //         user => {this.postWithUserList.push([post,user.data() as User]);
-    //               console.log("user : " + user);}
-    //       )
-    //   })
-    // })
   }
 
 
