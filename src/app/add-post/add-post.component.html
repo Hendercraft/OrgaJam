@@ -1,0 +1,5 @@
+<mat-card>
+    <textarea [(ngModel)]="postText"></textarea>
+    <input (change)="onFileSelected($event)" type="file">
+    <button mat-button (click)="addPost()">Poster</button>
+</mat-card>

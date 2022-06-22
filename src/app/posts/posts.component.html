@@ -1,0 +1,17 @@
+<mat-card class="example-card">
+    <mat-card-header>
+        <img mat-card-avatar class="rounded-circle" [src]="postWithUserList[0][1]?.photoURL"/>
+        <mat-card-title>{{postWithUserList[0][1]?.displayName}}</mat-card-title>
+        <mat-card-subtitle>{{postWithUserList[0][1]?.uid}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+        <p>
+            {{postWithUserList[0][0]?.text}}
+        </p>
+    </mat-card-content>
+    <img mat-card-image [src]="postWithUserList[0][0]?.photoURL"/>
+    <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+    </mat-card-actions>
+</mat-card>

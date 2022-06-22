@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environments/environment';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 
@@ -36,6 +36,8 @@ import {MatListModule} from "@angular/material/list";
 import {SignInComponent} from "./sign-in/sign-in.component";
 import {WelcomeComponent} from "./welcome/welcome.component";
 import {StorageService} from "./services/storage/storage.service";
+import { PostsComponent } from './posts/posts.component';
+import { AddPostComponent } from './add-post/add-post.component';
 
 
 
@@ -52,7 +54,9 @@ import {StorageService} from "./services/storage/storage.service";
     FeedComponent,
     FriendsCardComponent,
     SignInComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    PostsComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
@@ -75,7 +79,7 @@ import {StorageService} from "./services/storage/storage.service";
     AngularFireDatabaseModule,
     MatDividerModule,
     MatListModule,
-
+    FormsModule,
   ],
   providers: [AuthService,StorageService],
   bootstrap: [AppComponent]
