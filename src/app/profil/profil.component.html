@@ -71,7 +71,9 @@
             </div>
 
             <div class="col-md-6">
-              <mat-checkbox id="isPro" formControlName="isPro" type="file">Êtes-vous un professionnel</mat-checkbox>
+              <mat-checkbox id="isPro" formControlName="isPro" type="file checkbox" [(ngModel)]="isPro" >
+                Êtes-vous un professionnel
+              </mat-checkbox>
             </div>
 
             <div class="text-center">
@@ -84,10 +86,17 @@
         </div>
       </div>
 
-      <div class="col-md-4" *ngIf = "this.profilForm.value.isPro">
+      <div class="col-md-4" *ngIf = "isPro === true">
         <div class="p-3 py-5">
-          <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span><span class="border px-3 p-1 add-experience"><i class="fa fa-plus"></i>&nbsp;Experience</span></div><br>
-          <div class="col-md-12"><label class="labels">Experience in Designing</label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+          <div class="d-flex justify-content-between align-items-center experience">
+            <span>Infro Pro</span>
+            <span class="border px-3 p-1 add-experience">
+            </span>
+          </div>
+          <div class="col-md-12"><label class="labels">
+            Experience in Designing</label>
+            <input type="text" class="form-control" placeholder="experience" value="">
+          </div> <br>
           <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
         </div>
       </div>

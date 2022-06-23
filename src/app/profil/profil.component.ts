@@ -22,6 +22,7 @@ export class ProfilComponent implements OnInit {
   pictureUrl : string;
   profileImage: File;
   oldUserData:User;
+  isPro: boolean;
 
   constructor(
     private fb: FormBuilder,
