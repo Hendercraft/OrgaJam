@@ -10,3 +10,12 @@
   margin-bottom: 5%;
   margin-top: 5%;
 }
+.rounded-circle {
+  /*position: absolute;*/
+  margin-top: -30px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 120px;
+  width: 120px;
+  /*width: 50%;*/
+}

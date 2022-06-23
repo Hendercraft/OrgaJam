@@ -1,5 +1,7 @@
 <mat-card class = "main">
+
   <form [formGroup]="profilForm" (ngSubmit)="profilOnSubmit()">
+    <img class="rounded-circle" *ngIf="this.pictureUrl !== '' " mat-card-image [src]=this.pictureUrl alt="">
     <p>
       <mat-form-field appearance="outline" class="profil-card-item">
         <mat-label>Nom d'utilisateur</mat-label>
@@ -16,12 +18,13 @@
 
     <label for="profilPicture" class="md-button md-raised md-primary upload-button">Upload une photo de profil :</label>
     <br>
-    <input  id="profilPicture"  formControlName="picture" type="file">
+    <input  id="profilPicture" (change)="onFileSelected($event)" type="file">
     <br>
     <p>
       <mat-form-field appearance="fill" class="profil-card-item">
         <mat-label>Instrument :</mat-label>
-        <mat-select [(value)]="selected">
+        <mat-select [(value)]="selectedInstrument">
+          <mat-option>Aucun</mat-option>
           <mat-option *ngFor="let instrument of instrumentList" [value]="instrument">{{instrument}}</mat-option>
         </mat-select>
       </mat-form-field>

@@ -40,6 +40,8 @@ import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostComponent } from './post/post.component';
 import {MatSelectModule} from "@angular/material/select";
+import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
 
 
 
@@ -84,7 +86,8 @@ import {MatSelectModule} from "@angular/material/select";
     MatListModule,
     FormsModule,
     MatSelectModule,
-
+    MatSnackBarModule,
+    MatExpansionModule
   ],
   providers: [AuthService,StorageService],
   bootstrap: [AppComponent]

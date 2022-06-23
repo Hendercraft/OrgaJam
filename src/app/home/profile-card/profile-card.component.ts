@@ -1,5 +1,7 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
+import {StorageService} from "../../services/storage/storage.service";
+import {User} from "../../services/user";
 
 @Component({
   selector: 'app-profile-card',
@@ -8,9 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileCardComponent implements OnInit {
 
-  constructor() { }
+  userData : User;
+  constructor(private storage : StorageService) { }
 
   ngOnInit(): void {
+    this.getCurrentUserData();
+  }
+
+
+  getCurrentUserData(){
+    const uid = JSON.parse(localStorage.getItem('user')).uid
+    console.log(uid)
+    const observer = {
+      next: user => {
+        this.userData = user.data();
+        console.log(this.userData)
+      },
+      error: err => {
+        console.log(err);
+      }
+    }
+    this.storage.getUserWithUID(uid).subscribe(observer)
+
   }
 
 }

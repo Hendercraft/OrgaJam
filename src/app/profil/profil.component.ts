@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {StorageService} from "../services/storage/storage.service";
 import {User} from "../services/user";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 
 
@@ -17,19 +18,20 @@ export class ProfilComponent implements OnInit {
   // @ts-ignore
   profilForm: FormGroup;
   instrumentList: String[];
-  selected : string;
+  selectedInstrument : string;
+  pictureUrl : string;
+  profileImage: File;
 
   constructor(
     private fb: FormBuilder,
-    private storage: StorageService) {
+    private storage: StorageService,
+    private snackBack: MatSnackBar) {
   }
 
   ngOnInit(): void {
     this.profilForm = this.fb.group({
       username: ['',],
       email: ['', [Validators.required, Validators.email]],
-      picture: [''],
-      instrument: [''],
       isPro: ['', [Validators.required]],
     })
 
@@ -47,13 +49,38 @@ export class ProfilComponent implements OnInit {
       'flutiste',
       'tubiste',
       'saxophoniste',
-      'multi-instrument',
-      'aucun'
+      'multi-instrument'
     ];
     this.getUserData();
   }
 
   profilOnSubmit() {
+    const oldUser: User = JSON.parse(localStorage.getItem(`user`));
+    console.log(oldUser);
+    const user  = {
+      uid: oldUser.uid,
+      email: this.profilForm.value.email,
+      instrument: this.selectedInstrument,
+      isPro: this.profilForm.value.isPro,
+    }
+
+    this.storage.updateUserData(user).then(
+      () => {
+        this.snackBack.open("Votre profil a été mis a jour avec succès !", "Ok");
+        this.ngOnInit();
+      },
+      err => {
+        this.snackBack.open("Il y a eu une erreur lors de la mise a jour de votre profil!", "Ok");
+        console.log(err)
+      }
+    );
+    if(this.profileImage !== undefined){
+      this.storage.uploadProfilePicture(this.profileImage)
+    }
+  }
+
+  onFileSelected(event:any): void {
+    this.profileImage = event.target.files[0];
   }
 
   getUserData() {
@@ -73,9 +100,10 @@ export class ProfilComponent implements OnInit {
   pushUserDataToView(user : User){
     this.profilForm.get('username').setValue(user.displayName);
     this.profilForm.get('email').setValue(user.email);
-    this.profilForm.get('instrument').setValue(user.instrument);
     this.profilForm.get('isPro').setValue(user.isPro);
-    this.selected = user.instrument;
+    this.selectedInstrument = user.instrument;
+    this.pictureUrl = user.photoURL;
+
   }
 
 
