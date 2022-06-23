@@ -46,6 +46,7 @@ import {MatExpansionModule} from "@angular/material/expansion";
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 import { SearchComponent } from './search/search.component';
 import { UserDisplayComponent } from './user-display/user-display.component';
+import { CommentsComponent } from './comments/comments.component';
 
 
 
@@ -68,7 +69,8 @@ import { UserDisplayComponent } from './user-display/user-display.component';
     PostComponent,
     FriendComponent,
     SearchComponent,
-    UserDisplayComponent
+    UserDisplayComponent,
+    CommentsComponent
   ],
     imports: [
         BrowserModule,

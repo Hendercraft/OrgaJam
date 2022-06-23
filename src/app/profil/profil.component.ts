@@ -107,7 +107,6 @@ export class ProfilComponent implements OnInit {
       }
     }
     let uid = JSON.parse(localStorage.getItem('user')).uid;
-    console.log(uid)
     this.storage.getUserWithUID(uid).subscribe(observer);
   }
 
