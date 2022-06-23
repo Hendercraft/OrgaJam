@@ -24,7 +24,12 @@
 
           </label>
           <i class="fa fa-search"></i>
-          <input class="form-control search-field" type="search" id="search-field" name="search" placeholder="Recherche">
+          <input matInput class="form-control search-field" type="search" id="search-field" name="search" placeholder="Recherche" #searchField (keydown.enter)="onSearch(searchField.value)">
+          <button mat-button type='submit' (click)="onSearch(searchField.value)">
+            <mat-icon>
+              search
+            </mat-icon>
+          </button>
         </div>
       </form>
 

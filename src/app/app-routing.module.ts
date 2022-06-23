@@ -6,13 +6,15 @@ import {MessageComponent} from "./message/message.component";
 import {HomeComponent} from "./home/home.component";
 import {SignInComponent} from "./sign-in/sign-in.component";
 import {AddPostComponent} from "./add-post/add-post.component";
+import {SearchComponent} from "./search/search.component";
 
 const routes: Routes = [
   {path : 'profil', component : ProfilComponent },
   {path: 'message', component: MessageComponent},
   {path: 'sign-up', component: SignUpComponent},
   {path: 'sign-in', component: SignInComponent},
-  {path: 'home', component: HomeComponent}
+  {path: 'home', component: HomeComponent},
+  {path: 'search', component: SearchComponent},
 ];
 
 @NgModule({

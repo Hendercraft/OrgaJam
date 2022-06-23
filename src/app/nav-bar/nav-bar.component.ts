@@ -1,6 +1,7 @@
 /* eslint-disable @angular-eslint/no-empty-lifecycle-method */
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../services/auth/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,9 +10,10 @@ import {AuthService} from "../services/auth/auth.service";
 })
 export class NavBarComponent implements OnInit {
 
-  constructor(private auth : AuthService) { }
+  constructor(private auth : AuthService,private router: Router) { }
 
   ngOnInit(): void {
+
   }
 
 
@@ -22,5 +24,10 @@ export class NavBarComponent implements OnInit {
   logOut(){
     this.auth.logOut();
   }
+
+  onSearch(searchField:string){
+    this.router.navigate(['search', {searchField: searchField}]);
+  }
+
 
 }

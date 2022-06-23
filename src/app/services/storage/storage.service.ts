@@ -25,10 +25,10 @@ export class StorageService {
     }
   }
 
-  getAllProfiles() : User[] {
-    const userList : User[] = [];
+  async getAllProfiles() {
+    let userList : User[] = [];
     const querySnapshot = this.afStore.collection(`users`).get();
-    querySnapshot.forEach((collection) => {
+    await querySnapshot.forEach((collection) => {
       collection.docs.forEach((user)=>{
           const userItem : User = user.data() as User;
           userList.push(userItem);
@@ -85,5 +85,4 @@ export class StorageService {
     const postRef = this.afStore.collection('users').doc(user.uid);
     return postRef.update(user)
   }
-
 }

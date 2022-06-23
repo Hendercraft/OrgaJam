@@ -40,6 +40,12 @@ import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostComponent } from './post/post.component';
 import { FriendComponent } from './friend/friend.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MatExpansionModule} from "@angular/material/expansion";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { SearchComponent } from './search/search.component';
+import { UserDisplayComponent } from './user-display/user-display.component';
 
 
 
@@ -60,7 +66,9 @@ import { FriendComponent } from './friend/friend.component';
     PostsComponent,
     AddPostComponent,
     PostComponent,
-    FriendComponent
+    FriendComponent,
+    SearchComponent,
+    UserDisplayComponent
   ],
     imports: [
         BrowserModule,

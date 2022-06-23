@@ -78,7 +78,6 @@ export class AuthService {
   }
 
   isLoggedIn(){
-    console.log(this.loggedIn);
     return this.loggedIn;
   }
 
