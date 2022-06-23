@@ -21,6 +21,7 @@ export class ProfilComponent implements OnInit {
   selectedInstrument : string;
   pictureUrl : string;
   profileImage: File;
+  oldUserData:User;
 
   constructor(
     private fb: FormBuilder,
@@ -86,6 +87,7 @@ export class ProfilComponent implements OnInit {
   getUserData() {
     const observer = {
       next: user => {
+        this.oldUserData = user.data();
         this.pushUserDataToView(user.data());
       },
       error: err => {

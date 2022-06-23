@@ -42,6 +42,7 @@ import { PostComponent } from './post/post.component';
 import {MatSelectModule} from "@angular/material/select";
 import {MatSnackBar, MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatExpansionModule} from "@angular/material/expansion";
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 
 
@@ -63,32 +64,33 @@ import {MatExpansionModule} from "@angular/material/expansion";
     AddPostComponent,
     PostComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatCheckboxModule,
-    ReactiveFormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    RouterModule,
-    MatIconModule,
-    MatSlideToggleModule,
-    MatSidenavModule,
-    AngularFirestoreModule,
-    AngularFireStorageModule,
-    AngularFireDatabaseModule,
-    MatDividerModule,
-    MatListModule,
-    FormsModule,
-    MatSelectModule,
-    MatSnackBarModule,
-    MatExpansionModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        ReactiveFormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireAuthModule,
+        RouterModule,
+        MatIconModule,
+        MatSlideToggleModule,
+        MatSidenavModule,
+        AngularFirestoreModule,
+        AngularFireStorageModule,
+        AngularFireDatabaseModule,
+        MatDividerModule,
+        MatListModule,
+        FormsModule,
+        MatSelectModule,
+        MatSnackBarModule,
+        MatExpansionModule,
+        MatProgressSpinnerModule
+    ],
   providers: [AuthService,StorageService],
   bootstrap: [AppComponent]
 })
