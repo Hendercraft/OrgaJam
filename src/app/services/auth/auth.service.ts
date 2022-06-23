@@ -24,6 +24,9 @@ export class AuthService {
         this.loggedIn = true;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
+        this.ngZone.run(() => {
+          this.router.navigate(['/home']);
+        });
       }
       else {
         localStorage.setItem('user', 'null');
@@ -51,9 +54,6 @@ export class AuthService {
         .signInWithEmailAndPassword(email, password)
         .then((result) => {
           window.alert(result.user?.uid);
-          this.ngZone.run(() => {
-            this.router.navigate(['/home']);
-          });
         })
         .catch((error) => {
           window.alert(error.message);

@@ -6,7 +6,9 @@
     </mat-panel-title>
   </mat-expansion-panel-header>
   <div class="body">
-    <textarea [(ngModel)]="postText"></textarea>
+    <mat-form-field appearance="standard">
+      <textarea matInput [(ngModel)]="postText"></textarea>
+    </mat-form-field>
     <input (change)="onFileSelected($event)" type="file">
     <button mat-raised-button color="secondary" (click)="addPost()">Poster</button>
   </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {StorageService} from "../services/storage/storage.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-add-post',
@@ -13,7 +14,9 @@ export class AddPostComponent implements OnInit {
   // @ts-ignore
   postText:string;
 
-  constructor(private storage : StorageService) {}
+  constructor(
+    private storage: StorageService,
+    private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
   }
@@ -24,6 +27,7 @@ export class AddPostComponent implements OnInit {
 
   addPost(){
     this.storage.uploadPost(this.postText,this.postImage);
+    this.snackBar.open("Vos poste a bien été ajouté ! ","Ok")
   }
 
 }
