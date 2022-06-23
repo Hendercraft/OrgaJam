@@ -1,5 +1,15 @@
-<mat-card>
+
+<mat-expansion-panel class="add-post-card">
+  <mat-expansion-panel-header>
+    <mat-panel-title class="fw-bold">
+    Ajouter un post :
+    </mat-panel-title>
+  </mat-expansion-panel-header>
+  <div class="body">
     <textarea [(ngModel)]="postText"></textarea>
     <input (change)="onFileSelected($event)" type="file">
-    <button mat-button (click)="addPost()">Poster</button>
-</mat-card>
+    <button mat-raised-button color="secondary" (click)="addPost()">Poster</button>
+  </div>
+</mat-expansion-panel>
+
+

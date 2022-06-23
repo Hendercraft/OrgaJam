@@ -1,0 +1,16 @@
+.add-post-card{
+  margin-bottom: 1em;
+
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.body{
+  display: flex;
+  flex-flow: column;
+}
+
+input{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}

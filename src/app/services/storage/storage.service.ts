@@ -38,6 +38,8 @@ export class StorageService {
     return userList;
   }
 
+
+
   uploadPost(text: string,img:File) {
     const postRef: AngularFirestoreDocument<any> = this.afStore.collection(`posts`).doc();
     // @ts-ignore
@@ -78,4 +80,10 @@ export class StorageService {
   getUserWithUID(uid:string){
     return this.afStore.collection(`users`).doc(uid).get();
   }
+
+  updateUserData(user){ //not using User type as some part might not be updated
+    const postRef = this.afStore.collection('users').doc(user.uid);
+    return postRef.update(user)
+  }
+
 }
