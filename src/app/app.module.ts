@@ -39,6 +39,7 @@ import {StorageService} from "./services/storage/storage.service";
 import { PostsComponent } from './posts/posts.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { PostComponent } from './post/post.component';
+import { FriendComponent } from './friend/friend.component';
 
 
 
@@ -58,7 +59,8 @@ import { PostComponent } from './post/post.component';
     WelcomeComponent,
     PostsComponent,
     AddPostComponent,
-    PostComponent
+    PostComponent,
+    FriendComponent
   ],
   imports: [
     BrowserModule,
