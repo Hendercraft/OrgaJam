@@ -48,6 +48,7 @@ import { SearchComponent } from './search/search.component';
 import { UserDisplayComponent } from './user-display/user-display.component';
 import { CommentsComponent } from './comments/comments.component';
 import { CommentComponent } from './comment/comment.component';
+import { FriendDisplayComponent } from './friend-display/friend-display.component';
 
 
 
@@ -72,7 +73,8 @@ import { CommentComponent } from './comment/comment.component';
     SearchComponent,
     UserDisplayComponent,
     CommentsComponent,
-    CommentComponent
+    CommentComponent,
+    FriendDisplayComponent
   ],
     imports: [
         BrowserModule,

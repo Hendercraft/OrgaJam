@@ -1,10 +1,12 @@
 <mat-card class="user-card mat-elevation-z2"  *ngIf="user !== undefined">
     <mat-card-title-group>
         <mat-card-title>{{user.displayName}}</mat-card-title>
-        <mat-card-subtitle>{{user.isPro}}</mat-card-subtitle>
-        <img mat-card-sm-image [src]="user.photoURL" >
+        <mat-card-subtitle *ngIf="user.isPro==true">{{user.service}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="user.isPro==false">{{user.instrument}}</mat-card-subtitle>
+        <img mat-card-sm-image [src]="user.photoURL" alt="">
     </mat-card-title-group>
     <mat-card-content>
+        <p>{{user.bio}}</p>
     </mat-card-content>
     <mat-card-actions>
         <button *ngIf="isAdded==false" mat-button (click)="addUserAsFriend()">

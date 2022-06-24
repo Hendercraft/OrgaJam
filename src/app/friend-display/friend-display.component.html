@@ -1,0 +1,17 @@
+<mat-card class="mat-elevation-z2"  *ngIf="friend !== undefined">
+    <mat-card-title-group>
+        <mat-card-title>{{friend.displayName}}</mat-card-title>
+        <mat-card-subtitle *ngIf="friend.isPro==true">{{friend.service}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="friend.isPro==false">{{friend.instrument}}</mat-card-subtitle>
+        <img mat-card-sm-image [src]="friend.photoURL" alt="">
+    </mat-card-title-group>
+    <mat-card-actions>
+
+        <button mat-button (click)=deleteFriend()>Ne plus suivre
+            <mat-icon>
+                clear
+            </mat-icon>
+        </button>
+    </mat-card-actions>
+</mat-card>
+

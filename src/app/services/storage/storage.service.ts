@@ -101,6 +101,7 @@ export class StorageService {
     return friendRef.delete();
   }
 
+
   async getFriendsList(){
     let friendsList : User[] = [];
     const user: User = JSON.parse(localStorage.getItem(`user`));
@@ -112,6 +113,29 @@ export class StorageService {
         friendsList.push(friendItem);
       })
     });
+    return friendsList;
+  }
+
+  async getFriendsListForFriendsDisplay(){
+    let friendsUidList : string[] = [];
+    let friendsList : User[] = [];
+    const user: User = JSON.parse(localStorage.getItem(`user`));
+    const querySnapshot = this.afStore.collection(`users`).doc(user.uid)
+        .collection(`friends`).get();
+    await querySnapshot.forEach((collection) => {
+      collection.docs.forEach((friend)=>{
+        const friendItem : User = friend.data() as User;
+        friendsUidList.push(friendItem.uid);
+      })
+    });
+    friendsUidList.forEach(uid =>{
+      this.getUserWithUID(uid).subscribe(user =>{
+        if(user!=undefined) {
+          friendsList.push(user.data() as User)
+          console.log(user.data());
+        }
+      })
+    })
     return friendsList;
   }
 }
