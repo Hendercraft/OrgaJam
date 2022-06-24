@@ -151,7 +151,7 @@ export class StorageService {
   async getCommentsList(postId : string){
     let commentsList : comment[] = [];
     const querySnapshot = this.afStore.collection(`posts`).doc(postId)
-      .collection(`commentaires`).get();
+      .collection(`comments`).get();
     await querySnapshot.forEach((collection) => {
       collection.docs.forEach((comment) => {
         const commentData: comment = comment.data() as comment;

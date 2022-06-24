@@ -2,8 +2,8 @@
   <mat-card-header>
     <img mat-card-avatar class="rounded-circle" [src]="user.photoURL" alt="Profile"/>
     <mat-card-title>{{user.displayName}}</mat-card-title>
-    <mat-card-subtitle *ngIf="user.isPro==true">{{user.service}}</mat-card-subtitle>
-    <mat-card-subtitle *ngIf="user.isPro==false">{{user.instrument}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user.isPro===true">{{user.service}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="user.isPro===false">{{user.instrument}}</mat-card-subtitle>
   </mat-card-header>
   <mat-divider></mat-divider>
   <mat-card-content>
@@ -17,4 +17,9 @@
     <button mat-button>LIKE</button>
     <button mat-button>SHARE</button>
   </mat-card-actions>
+
+  <mat-card-footer>
+    <mat-divider></mat-divider>
+    <app-comments [post]="post"></app-comments>
+  </mat-card-footer>
 </mat-card>

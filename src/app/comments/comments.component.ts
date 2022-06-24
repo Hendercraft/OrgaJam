@@ -17,23 +17,14 @@ export class CommentsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    this.commentList =
-      [
-        {text: 'Hello',
-          uid: 'D9diAs7AUZbnsMG9aCBnbF1uFJ63',
-          postId:'NUZqoylEpGSwA1FNoSo7EWmyxi73'
-        },
-        {text: '2nd commentaire',
-          uid: 'D9diAs7AUZbnsMG9aCBnbF1uFJ63',
-          postId:'NUZqoylEpGSwA1FNoSo7EWmyxi73'
-        }
-      ]
+    this.getPostComments();
   }
 
 
   getPostComments(){
-    //this.storage.getCommentsList(this.post.postId);
+    this.storage.getCommentsList(this.post.postId).then(comments => {
+      this.commentList=comments;
+    })
 
 
   }
