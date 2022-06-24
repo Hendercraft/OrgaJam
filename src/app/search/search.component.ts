@@ -27,10 +27,12 @@ export class SearchComponent implements OnInit {
   }
 
   doSearch(searchField:string) {
+    this.userList = [];
     this.storage.getAllProfiles().then(userList =>
       userList.forEach(user => {
-        if (user.displayName.includes(searchField)) {
+        if (user.displayName!=null && user.displayName.includes(searchField)) {
           this.userList.push(user);
+          console.log(user.displayName);
         }
       })
     )

@@ -7,12 +7,12 @@
     <mat-card-content>
     </mat-card-content>
     <mat-card-actions>
-        <button *ngIf="isAdded==false" mat-button (click)="isAdded=true">
+        <button *ngIf="isAdded==false" mat-button (click)="addUserAsFriend()">
             <mat-icon>
                 add
             </mat-icon>
         </button>
-        <button *ngIf="isAdded==true" mat-button (click)="isAdded=false">
+        <button *ngIf="isAdded==true" mat-button (click)=deleteUserFromFriends()>
             <mat-icon>
                 check
             </mat-icon>

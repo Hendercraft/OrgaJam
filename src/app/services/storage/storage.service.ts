@@ -25,6 +25,14 @@ export class StorageService {
     }
   }
 
+  addFriend(friendUid: string){
+    const user: User = JSON.parse(localStorage.getItem(`user`));
+    const friendRef: AngularFirestoreDocument<any> = this.afStore.collection(`users`).doc(user.uid)
+        .collection(`friends`).doc(friendUid);
+    return friendRef.set({uid:friendUid}, {merge:true});
+
+  }
+
   async getAllProfiles() {
     let userList : User[] = [];
     const querySnapshot = this.afStore.collection(`users`).get();
@@ -84,5 +92,26 @@ export class StorageService {
   updateUserData(user){ //not using User type as some part might not be updated
     const postRef = this.afStore.collection('users').doc(user.uid);
     return postRef.update(user)
+  }
+
+  deleteFriend(friendUid:string){
+    const user: User = JSON.parse(localStorage.getItem(`user`));
+    const friendRef: AngularFirestoreDocument<any> = this.afStore.collection(`users`).doc(user.uid)
+        .collection(`friends`).doc(friendUid);
+    return friendRef.delete();
+  }
+
+  async getFriendsList(){
+    let friendsList : User[] = [];
+    const user: User = JSON.parse(localStorage.getItem(`user`));
+    const querySnapshot = this.afStore.collection(`users`).doc(user.uid)
+        .collection(`friends`).get();
+    await querySnapshot.forEach((collection) => {
+      collection.docs.forEach((friend)=>{
+        const friendItem : User = friend.data() as User;
+        friendsList.push(friendItem);
+      })
+    });
+    return friendsList;
   }
 }
