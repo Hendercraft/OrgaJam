@@ -51,7 +51,6 @@ export class AuthService {
     return this.afAuth
         .signInWithEmailAndPassword(email, password)
         .then((result) => {
-          window.alert(result.user?.uid);
         })
         .catch((error) => {
           window.alert(error.message);
@@ -67,10 +66,10 @@ export class AuthService {
       phoneNumber: '',
       bio: '',
       email: user.email,
-      displayName: user.displayName,
+      displayName:'',
       instrument: '',
-      photoURL: user.photoURL,
-      emailVerified: user.emailVerified,
+      photoURL: '',
+      emailVerified: false,
       isPro:isPro,
       address: '',
       town: '',

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {StorageService} from "../services/storage/storage.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
 import {MatSnackBar} from "@angular/material/snack-bar";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-add-post',
@@ -16,7 +17,8 @@ export class AddPostComponent implements OnInit {
 
   constructor(
     private storage: StorageService,
-    private snackBar: MatSnackBar) {}
+    private snackBar: MatSnackBar,
+    private router: Router) {}
 
   ngOnInit(): void {
   }
@@ -27,7 +29,11 @@ export class AddPostComponent implements OnInit {
 
   addPost(){
     this.storage.uploadPost(this.postText,this.postImage);
-    this.snackBar.open("Vos poste a bien été ajouté ! ","Ok")
+    this.snackBar.open("Vos poste a bien été ajouté ! ","Ok");
+    let currentUrl = this.router.url;
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([currentUrl]);
   }
 
 }
