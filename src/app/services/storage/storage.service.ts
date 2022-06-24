@@ -3,6 +3,8 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {AngularFirestore, AngularFirestoreDocument,} from "@angular/fire/compat/firestore";
 import {User} from "../user";
 import {Post} from "../post";
+import {comment} from "../comment";
+import {collection} from "@angular/fire/firestore";
 
 
 @Injectable({
@@ -56,12 +58,18 @@ export class StorageService {
       text: text,
       photoURL: "",
       uid: user.uid,
+      postId: ''
     };
 
+    const postId = postRef.ref.id;
     postRef.set(postData, {
       merge: true,
+    }).then( () => {
+      postRef.update({
+        postId: postId
+      });
     });
-    const postId = postRef.ref.id;
+
     const storageRef = this.afStorage.storage.ref();
     const path = `/posts/${postId}`;
     const imgRef = storageRef.child(path);
@@ -138,4 +146,21 @@ export class StorageService {
     })
     return friendsList;
   }
+
+
+  async getCommentsList(postId : string){
+    let commentsList : comment[] = [];
+    const querySnapshot = this.afStore.collection(`posts`).doc(postId)
+      .collection(`commentaires`).get();
+    await querySnapshot.forEach((collection) => {
+      collection.docs.forEach((comment) => {
+        const commentData: comment = comment.data() as comment;
+        commentsList.push(commentData);
+      })
+    });
+    return commentsList;
+  }
+
+
+
 }

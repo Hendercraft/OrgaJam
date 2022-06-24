@@ -1,8 +1,6 @@
 <mat-list>
-  <app-comment [comment]="
-  {text: 'Hello',
-  uid: 'D9diAs7AUZbnsMG9aCBnbF1uFJ63',
-  postId:'NUZqoylEpGSwA1FNoSo7EWmyxi73'
-  }"></app-comment>
-
+  <div *ngFor="let comment of commentList" >
+    <app-comment [comment]="comment"></app-comment>
+    <mat-divider></mat-divider>
+  </div>
 </mat-list>

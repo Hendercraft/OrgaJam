@@ -39,9 +39,7 @@ export class AuthService {
     return this.afAuth
         .createUserWithEmailAndPassword(email,password)
         .then((result)=> {
-          //this.sendVerificationMail();
           this.setUserData(result.user,isPro);
-          //window.alert(this.userData.uid+this.userData.email+this.userData.displayName+this.userData.photoURL+this.userData.emailVerified+this.userData.isPro);
             }
         )
         .catch((error)=> {
@@ -70,7 +68,7 @@ export class AuthService {
       bio: '',
       email: user.email,
       displayName: user.displayName,
-      instrument: user.instrument,
+      instrument: '',
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
       isPro:isPro,
@@ -92,9 +90,10 @@ export class AuthService {
     this.afAuth.signOut().then(() => {
       this.loggedIn = false;
       this.userData = null;
+      this.router.navigateByUrl('/welcome');
     }).catch((error) => {
-      console.log("There is an error while loggingOut")
-      console.log(error)
+      console.log("There is an error while loggingOut");
+      console.log(error);
     });
   }
 
