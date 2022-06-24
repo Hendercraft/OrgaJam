@@ -5,8 +5,9 @@
     <img  class = "rounded-circle" [src]="this.user.photoURL" width="45px" height="45px"
           style="background-color: rgb(255,255,255);
         padding: 2px;">
-    <h4>{{user.displayName}}</h4>
+
     <div class="text" style="margin-left: 1em">
+      <b>{{user.displayName}}</b>
       {{comment.text}}
     </div>
   </mat-list-item>

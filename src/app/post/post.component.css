@@ -55,3 +55,7 @@ body {
   cursor: pointer;
   border: solid 1px #BA68C8
 }
+
+.comments{
+  padding-left: 2vh;
+}
