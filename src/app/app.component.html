@@ -1,2 +1,3 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar *ngIf=" (currentUrl !== '/welcome' && currentUrl !== '/sign-in' && currentUrl !== '/sign-up')"></app-nav-bar>
 <router-outlet></router-outlet>
+<!--<app-comments></app-comments>-->

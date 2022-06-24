@@ -89,9 +89,9 @@ export class StorageService {
     return this.afStore.collection(`users`).doc(uid).get();
   }
 
-  updateUserData(user){ //not using User type as some part might not be updated
-    const postRef = this.afStore.collection('users').doc(user.uid);
-    return postRef.update(user)
+  updateUserData(userData, uid){ //not using User type as some part might not be updated
+    const postRef = this.afStore.collection('users').doc(uid);
+    return postRef.update(userData)
   }
 
   deleteFriend(friendUid:string){

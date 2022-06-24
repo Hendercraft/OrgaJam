@@ -3,7 +3,6 @@ import { User } from "../user";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
-import {collection} from "@angular/fire/firestore";
 
 
 @Injectable({
@@ -25,6 +24,9 @@ export class AuthService {
         this.loggedIn = true;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
+        this.ngZone.run(() => {
+          this.router.navigate(['/home']);
+        });
       }
       else {
         localStorage.setItem('user', 'null');
@@ -52,9 +54,6 @@ export class AuthService {
         .signInWithEmailAndPassword(email, password)
         .then((result) => {
           window.alert(result.user?.uid);
-          this.ngZone.run(() => {
-            this.router.navigate(['/home']);
-          });
         })
         .catch((error) => {
           window.alert(error.message);
@@ -65,12 +64,20 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afStore.collection(`users`).doc(user.uid);
     const userData: User = {
       uid: user.uid,
+      name : '',
+      surname: '',
+      phoneNumber: '',
+      bio: '',
       email: user.email,
       displayName: user.displayName,
       instrument: user.instrument,
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
       isPro:isPro,
+      address: '',
+      town: '',
+      postalCode: '',
+      service: '',
     };
     return userRef.set(userData, {
       merge: true,

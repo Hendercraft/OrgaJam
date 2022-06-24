@@ -9,6 +9,7 @@
     margin-right: 5%;
     display: flex;
     flex-flow: column;
+    text-align: center;
 }
 
 .sign-up-title{
@@ -27,5 +28,8 @@
 .sign-up-button{
     margin-bottom: 5%;
     margin-top: 5%;
+}
+p{
+  margin-top: 1em;
 }
 

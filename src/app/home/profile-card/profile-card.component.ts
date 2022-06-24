@@ -20,11 +20,9 @@ export class ProfileCardComponent implements OnInit {
 
   getCurrentUserData(){
     const uid = JSON.parse(localStorage.getItem('user')).uid
-    console.log(uid)
     const observer = {
       next: user => {
         this.userData = user.data();
-        console.log(this.userData)
       },
       error: err => {
         console.log(err);

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import {AuthService} from "./services/auth/auth.service";
-
+import { Location } from '@angular/common';
+import {Router, NavigationEnd, RouterEvent} from "@angular/router";
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,4 +8,16 @@ import {AuthService} from "./services/auth/auth.service";
 })
 export class AppComponent {
   title = 'OrgaJam';
+  currentUrl;
+
+  constructor(
+    private router: Router
+  ) {
+    router.events.subscribe(event =>
+      {
+        if (event instanceof RouterEvent) {
+          this.currentUrl = event.url;
+        }
+      });
+  }
 }

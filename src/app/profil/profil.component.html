@@ -3,105 +3,161 @@
 
 <ng-template #content>
   <div class="container rounded bg-white mt-5 mb-5" >
+    <form [formGroup]="profilForm" (ngSubmit)="profilOnSubmit()">
+      <div class="row">
 
-    <div class="row">
+        <div class="col-md-3 border-right">
+          <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <img class="rounded-circle mt-5" width="150px" src="{{oldUserData.photoURL}} ">
+            <span class="font-weight-bold" >{{oldUserData.displayName}}</span>
+            <span class="text-black-50" >{{oldUserData.email}}</span>
 
-      <div class="col-md-3 border-right">
-        <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-          <img class="rounded-circle mt-5" width="150px" src="{{oldUserData.photoURL}} ">
-          <span class="font-weight-bold" >{{oldUserData.displayName}}</span>
-          <span class="text-black-50" >{{oldUserData.email}}</span>
+
+          </div>
         </div>
-      </div>
 
-      <div class="col-md-5 border-right">
-        <div class="p-3 py-5">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="text-right">Paramètre du compte</h4>
+        <div class="col-md-5 border-right">
+          <div class="p-3 py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">Paramètre du compte</h4>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="outline" class="profil-card-item">
+                    <mat-label>Prénom</mat-label>
+                    <input matInput id="name" formControlName="name" type="text">
+                  </mat-form-field>
+                </p>
+              </div>
+              <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="outline" class="profil-card-item">
+                    <mat-label>Nom</mat-label>
+                    <input matInput id="surname" formControlName="surname" type="text">
+                  </mat-form-field>
+                </p>
+              </div>
+            </div>
+
+            <div class="row mt-2">
+
+              <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="outline" class="profil-card-item">
+                    <mat-label>Nom d'utilisateur</mat-label>
+                    <input matInput id="displayName" formControlName="displayName" type="text">
+                  </mat-form-field>
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="outline" class="profil-card-item">
+                    <mat-label>Email</mat-label>
+                    <input matInput id="email" formControlName="email" type="email">
+                  </mat-form-field>
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="outline" class="profil-card-item">
+                    <mat-label>Numéro de téléphone</mat-label>
+                    <input matInput id="phoneNumber" formControlName="phoneNumber" type="text">
+                  </mat-form-field>
+                </p>
+              </div>
+
+
+              <div class="col-md-6">
+                <p>
+                  <mat-form-field appearance="fill" class="profil-card-item">
+                    <mat-label>Talent :</mat-label>
+                    <mat-select formControlName="instrument">
+                      <mat-option>Aucun</mat-option>
+                      <mat-option *ngFor="let instrument of instrumentList" [value]="instrument">{{instrument}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </p>
+              </div>
+
+              <div class="col-md-6">
+                <mat-checkbox id="isPro" formControlName="isPro" type="checkbox" >
+                  Êtes-vous un professionnel ?
+                </mat-checkbox>
+              </div>
+
+
+              <div class="text-center">
+                <label for="profilPicture" class="md-button md-raised md-primary upload-button">Upload une photo de profil :</label>
+                <br>
+                <input  id="profilPicture" (change)="onFileSelected($event)" type="file">
+              </div>
+
+              <div class="text-center bio">
+                <mat-form-field appearance="standard" class="mat-form-bio">
+                  <mat-label>Biographie : </mat-label>
+                  <textarea matInput style="width: 500px" formControlName="bio" id="bio" type="text">Test</textarea>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="mt-5 text-center">
+              <button class="btn btn-primary profile-button" type="submit" [disabled]="!profilForm.valid">Mettre à jour le profil</button>
+            </div>
           </div>
-          <div class="row mt-2">
-            <div class="col-md-6">
-              <p>
-                <mat-form-field appearance="outline" class="profil-card-item">
-                  <mat-label>Prénom</mat-label>
-                  <input matInput id="name" formControlName="name" type="text">
-                </mat-form-field>
-              </p>
-            </div>
-            <div class="col-md-6">
-              <p>
-                <mat-form-field appearance="outline" class="profil-card-item">
-                  <mat-label>Nom</mat-label>
-                  <input matInput id="surname" formControlName="surname" type="text">
-                </mat-form-field>
-              </p>
-            </div>
-          </div>
+        </div>
 
-          <div class="row mt-3">
-            <div class="col-md-6">
-              <p>
-                <mat-form-field appearance="outline" class="profil-card-item">
-                  <mat-label>Email</mat-label>
-                  <input matInput id="email" formControlName="email" type="email">
-                </mat-form-field>
-              </p>
+        <div class="col-md-4" *ngIf = "this.profilForm.value.isPro">
+          <div class="p-3 py-5">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">Information Professionnel</h4>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
               <p>
                 <mat-form-field appearance="outline" class="profil-card-item">
-                  <mat-label>Numéro de téléphone</mat-label>
-                  <input matInput id="phoneNumber" formControlName="phoneNumber" type="text">
+                  <mat-label>Adresse</mat-label>
+                  <input matInput id="adresse" formControlName="address" type="text">
+                </mat-form-field>
+              </p>
+            </div>
+            <div class="col-md-12">
+              <p>
+                <mat-form-field appearance="outline" class="profil-card-item">
+                  <mat-label>Ville</mat-label>
+                  <input matInput id="ville" formControlName="town" type="text">
                 </mat-form-field>
               </p>
             </div>
 
+            <div class="col-md-12">
+              <p>
+                <mat-form-field appearance="outline" class="profil-card-item">
+                  <mat-label>Code postal</mat-label>
+                  <input matInput id="codePostal" formControlName="postalCode" type="text">
+                </mat-form-field>
+              </p>
+            </div>
 
-            <div class="col-md-6">
+            <div class="col-md-12">
               <p>
                 <mat-form-field appearance="fill" class="profil-card-item">
-                  <mat-label>Talent :</mat-label>
-                  <mat-select [(value)]="selectedInstrument">
+                  <mat-label>Service :</mat-label>
+                  <mat-select formControlName="service">
                     <mat-option>Aucun</mat-option>
-                    <mat-option *ngFor="let instrument of instrumentList" [value]="instrument">{{instrument}}</mat-option>
+                    <mat-option *ngFor="let service of serviceList" [value]="service">{{service}}</mat-option>
                   </mat-select>
                 </mat-form-field>
               </p>
             </div>
-
-            <div class="col-md-6">
-              <mat-checkbox id="isPro" formControlName="isPro" type="file checkbox" [(ngModel)]="isPro" >
-                Êtes-vous un professionnel
-              </mat-checkbox>
-            </div>
-
-            <div class="text-center">
-              <label for="profilPicture" class="md-button md-raised md-primary upload-button">Upload une photo de profil :</label>
-              <br>
-              <input  id="profilPicture" (change)="onFileSelected($event)" type="file">
-            </div>
           </div>
-          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button">Save Profile</button></div>
         </div>
       </div>
-
-      <div class="col-md-4" *ngIf = "isPro === true">
-        <div class="p-3 py-5">
-          <div class="d-flex justify-content-between align-items-center experience">
-            <span>Infro Pro</span>
-            <span class="border px-3 p-1 add-experience">
-            </span>
-          </div>
-          <div class="col-md-12"><label class="labels">
-            Experience in Designing</label>
-            <input type="text" class="form-control" placeholder="experience" value="">
-          </div> <br>
-          <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
-        </div>
-      </div>
-    </div>
+    </form>
   </div>
+
 
 </ng-template>
 
