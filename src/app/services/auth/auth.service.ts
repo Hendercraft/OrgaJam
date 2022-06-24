@@ -53,7 +53,6 @@ export class AuthService {
     return this.afAuth
         .signInWithEmailAndPassword(email, password)
         .then((result) => {
-          window.alert(result.user?.uid);
         })
         .catch((error) => {
           window.alert(error.message);
